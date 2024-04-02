@@ -12,7 +12,7 @@
 from typing import Text
 from torch.utils.data import Dataset
 from utils.processor import InputExample, DataProcessor
-from transformers import BertTokenizer
+from transformers import BertTokenizer, AutoTokenizer
 
 
 class CustomDataset(Dataset):
@@ -24,7 +24,7 @@ class CustomDataset(Dataset):
                  data_type: "Text",
                  data_dir: "Text",
                  processor: "DataProcessor",
-                 tokenizer: "BertTokenizer",
+                 tokenizer: "AutoTokenizer",
                  max_seq_length: "int"
                  ) -> "None":
         self.max_seq_length = max_seq_length

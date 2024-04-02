@@ -27,7 +27,7 @@ from models.model import SpanAsteModel
 from utils.processor import Res15DataProcessor
 from utils.tager import SpanLabel
 from utils.tager import RelationLabel
-from transformers import BertTokenizer, BertModel, get_linear_schedule_with_warmup
+from transformers import BertTokenizer, BertModel, AutoTokenizer, AutoModel, get_linear_schedule_with_warmup
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 if torch.cuda.is_available():
@@ -48,7 +48,8 @@ def do_train():
     set_seed(args.seed)
 
     # tokenizer
-    tokenizer = BertTokenizer.from_pretrained(args.bert_model)
+    # tokenizer = BertTokenizer.from_pretrained(args.bert_model)
+    tokenizer = AutoTokenizer.from_pretrained(args.bert_model)
 
     # create processor
     processor = Res15DataProcessor(tokenizer, args.max_seq_len)
